@@ -52,17 +52,22 @@ app.get("/chicken", (req, res) => {
 app.get("/person/:workType", async (req, res) => {
   try {
     const workType = req.params.workType; //  in worktype we fetched the type of work as :worktype
+
+
     if (workType == "Chef" || workType == "manager" || workType == "waiter") {
       const response = await Person.find({ work: workType });
       console.log("response fetched ");
       res.status(200).json(response);
-    } else {
+    } 
+    else {
       res.status(404).json({ error: "invalid work type " });
     }
-  } catch (error) {
+    } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
+
+
 });
 app.post("/menu", async (req, res) => {
   try {
@@ -76,6 +81,26 @@ app.post("/menu", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+//update
+app.put('/:id', async (req, res) => {
+  try{
+    const personid = req.params.id;
+    const updatedperson = req.body;
+    const response = await Person.findByIdAndUpdate(personid, updatedperson, {
+      new:true,
+      runValidators:true,
+    });
+    if(!response){
+      res.status(404).json({ error: "Person not found" });
+    }
+    console.log("Person updated");
+    res.status(200).json(response);
+  }catch(err){
+     console.log(error);
+     res.status(500).json({ error: "Internal Server Error" });
+
+  }
+})
 
 
 
