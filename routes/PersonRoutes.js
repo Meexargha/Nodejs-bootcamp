@@ -23,7 +23,7 @@ router.get("/person/:workType", async (req, res) => {
         console.log("Saved Person:", savedPerson);
         res.status(200).json(savedPerson);
       } catch (error) {
-        console.error("❌ Error occurred:", error); // full error object
+        console.error("Error occurred:", error); // full error object
         res.status(500).json({ error: error.message || "Unknown error" });
       }
     });
