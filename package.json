@@ -1,6 +1,7 @@
 {
   "name": "node_backend",
   "version": "1.0.0",
+  "type": "module",
   "description": "nodejs by argha ",
   "main": "index.js",
   "scripts": {
