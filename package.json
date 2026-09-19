@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "argha kundu",
+  "author": "argha kundu ",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^2.2.0",
